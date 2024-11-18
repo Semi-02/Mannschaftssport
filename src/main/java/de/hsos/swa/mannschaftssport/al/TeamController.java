@@ -1,4 +1,11 @@
 package de.hsos.swa.mannschaftssport.al;
 
-public class TeamController {
+import de.hsos.swa.mannschaftssport.bl.Team;
+import jakarta.inject.Inject;
+
+public class TeamController implements TeamCRUD{
+
+    @Inject
+    TeamConverter converter;
+
 }
