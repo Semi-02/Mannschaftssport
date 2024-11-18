@@ -1,0 +1,76 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>
+</help_text><element><id>UMLClass</id><coordinates><x>76</x><y>280</y><w>270</w><h>220</h></coordinates><panel_attributes>TeamResource
+--
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>306</x><y>1100</y><w>130</w><h>70</h></coordinates><panel_attributes>Team
+--
+-id: long
+-name: String
+-category: Category</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>276</x><y>1420</y><w>100</w><h>30</h></coordinates><panel_attributes>TeamRepository</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>56</x><y>740</y><w>100</w><h>30</h></coordinates><panel_attributes>TeamController</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>856</x><y>580</y><w>130</w><h>160</h></coordinates><panel_attributes>TeamDTO
+--
+id: long
+type: String
+attributes: Attributes
+links: Links
+{innerclass
+Attributes
+--
+name: String
+category: String
+innerclass}
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>546</x><y>1100</y><w>100</w><h>60</h></coordinates><panel_attributes>Person
+--
+id: long
+name: String
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>426</x><y>1090</y><w>140</w><h>50</h></coordinates><panel_attributes>lt=&lt;-
+m1=1
+m2=1
+r1=-manager</panel_attributes><additional_attributes>120;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>426</x><y>1130</y><w>140</w><h>50</h></coordinates><panel_attributes>lt=&lt;-
+m1=*
+m2=1
+r1=-players
+</panel_attributes><additional_attributes>120;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>546</x><y>1170</y><w>100</w><h>90</h></coordinates><panel_attributes>&lt;&lt;enum&gt;&gt;
+Category
+--
+juniors
+seniors
+masters</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>1186</x><y>820</y><w>100</w><h>70</h></coordinates><panel_attributes>passwesen</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>36</x><y>230</y><w>660</w><h>320</h></coordinates><panel_attributes>boundary</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>776</x><y>480</y><w>280</w><h>450</h></coordinates><panel_attributes>acl</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>26</x><y>570</y><w>670</w><h>350</h></coordinates><panel_attributes>al</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>26</x><y>940</y><w>710</w><h>340</h></coordinates><panel_attributes>bl</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>36</x><y>1320</y><w>660</w><h>150</h></coordinates><panel_attributes>dal</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>356</x><y>1160</y><w>210</w><h>70</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;uses&gt;&gt;</panel_attributes><additional_attributes>190;50;10;50;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>436</x><y>280</y><w>240</w><h>210</h></coordinates><panel_attributes>TeamIdResource
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>316</x><y>620</y><w>100</w><h>40</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+TeamCRUD</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>786</x><y>820</y><w>250</w><h>70</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+Passheft
+--
++getPlayerIdByName(name: String) : long</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1026</x><y>840</y><w>180</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;.
+&lt;&lt;implements&gt;&gt;</panel_attributes><additional_attributes>10;20;160;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>476</x><y>720</y><w>200</w><h>70</h></coordinates><panel_attributes>&lt;&lt;Service&gt;&gt;
+TeamConverter
+--
++toDTO(team: Team) : TeamDTO
++toEntity(team: TeamDTO) : Team</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>96</x><y>630</y><w>240</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>220;10;10;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>146</x><y>730</y><w>350</w><h>50</h></coordinates><panel_attributes>lt=&lt;-
+m1=1
+m2=1
+r1=-converter</panel_attributes><additional_attributes>330;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>176</x><y>980</y><w>100</w><h>40</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+TeamRegistry
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>176</x><y>840</y><w>100</w><h>50</h></coordinates><panel_attributes>&lt;&lt;Service&gt;&gt;
+TeamService</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>96</x><y>760</y><w>100</w><h>140</h></coordinates><panel_attributes>lt=&lt;-
+m1=1
+m2=1
+r1=-service</panel_attributes><additional_attributes>80;110;10;110;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>306</x><y>1160</y><w>70</w><h>280</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;uses&gt;&gt;</panel_attributes><additional_attributes>10;10;10;260</additional_attributes></element><element><id>UMLClass</id><coordinates><x>406</x><y>820</y><w>240</w><h>70</h></coordinates><panel_attributes>&lt;&lt;Service&gt;&gt;
+PlayerIdService
+--
+getPlayerIdByName(name:String) : long</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>636</x><y>840</y><w>170</w><h>50</h></coordinates><panel_attributes>lt=&lt;-
+m1=1
+m2=1
+r1=-passheft</panel_attributes><additional_attributes>150;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>76</x><y>990</y><w>220</w><h>470</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>100;10;10;10;10;450;200;450</additional_attributes></element><element><id>Relation</id><coordinates><x>216</x><y>880</y><w>80</w><h>120</h></coordinates><panel_attributes>lt=&lt;-
+m1=1
+m2=1
+r1=-registry</panel_attributes><additional_attributes>10;100;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>266</x><y>840</y><w>160</w><h>50</h></coordinates><panel_attributes>lt=&lt;-
+m1=1
+m2=1
+r1=-playerIdService</panel_attributes><additional_attributes>140;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>406</x><y>480</y><w>180</w><h>190</h></coordinates><panel_attributes>lt=&lt;-
+m1=1
+m2=1
+r1=-teamCRUD</panel_attributes><additional_attributes>10;160;150;160;150;10</additional_attributes></element><element><id>Relation</id><coordinates><x>196</x><y>490</y><w>250</w><h>150</h></coordinates><panel_attributes>lt=&lt;-
+m1=1
+m2=1
+r1=-teamCRUD</panel_attributes><additional_attributes>170;130;170;40;10;40;10;10</additional_attributes></element></diagram>
