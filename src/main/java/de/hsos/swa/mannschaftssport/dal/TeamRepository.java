@@ -33,4 +33,28 @@ public class TeamRepository implements TeamRegistry {
         teams.put(teamEntity.getId(), teamEntity);
         return teamEntity;
     }
+
+    @Override
+    public Team findTeamById(Long id) {
+        return teams.get(id);
+    }
+
+    @Override
+    public Team updateTeamName(Long id, String name) {
+        Team team = teams.get(id);
+        team.setName(name);
+        return team;
+    }
+
+    @Override
+    public Team updateTeamCategory(Long id, String category) {
+        Team team = teams.get(id);
+        team.setCategory(Category.valueOf(category));
+        return team;
+    }
+
+    @Override
+    public boolean deleteTeamById(Long id) {
+        return teams.remove(id) != null;
+    }
 }
