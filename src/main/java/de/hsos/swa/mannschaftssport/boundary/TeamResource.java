@@ -12,6 +12,11 @@ import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.UriInfo;
+import org.eclipse.microprofile.openapi.annotations.Operation;
+import org.eclipse.microprofile.openapi.annotations.media.Content;
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponses;
 
 
 import java.net.URI;
@@ -25,6 +30,15 @@ public class TeamResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+    @Operation(summary = "get teams", description = "get teams fitered by name, category, page number and pagesize")
+    @APIResponses(
+            value = {
+                    @APIResponse(
+                            responseCode = "200", description = "Successfully get teams according to the filtering",
+                            content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = TeamDTO.class))
+                    )
+            }
+    )
     public Response getTeams(@QueryParam("filter[name]") String nameFilter,
                              @QueryParam("filter[category]") String categoryFilter,
                              @QueryParam("page[number]") @DefaultValue("1") int pageNumber,
@@ -64,6 +78,15 @@ public class TeamResource {
 
     @POST
     @Transactional
+    @Operation(summary = "create teams", description = "create a team")
+    @APIResponses(
+            value = {
+                    @APIResponse(
+                            responseCode = "201", description = "Successfully create a new team",
+                            content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = TeamDTO.class))
+                    )
+            }
+    )
     public Response createTeam(TeamDTO teamData, @Context UriInfo uriInfo) {
         TeamDTO newTeam = teamCRUD.saveTeam(teamData);
 

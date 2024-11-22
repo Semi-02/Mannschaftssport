@@ -8,6 +8,11 @@ import jakarta.json.JsonObject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.*;
+import org.eclipse.microprofile.openapi.annotations.Operation;
+import org.eclipse.microprofile.openapi.annotations.media.Content;
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponses;
 
 @Path("/teams")
 @Produces(MediaType.APPLICATION_JSON)
@@ -19,6 +24,15 @@ public class TeamIdResource {
 
     @GET
     @Path("/{id}")
+    @Operation(summary = "get a team", description = "get a team by id")
+    @APIResponses(
+            value = {
+                    @APIResponse(
+                            responseCode = "200", description = "Successfully get a team specified by id",
+                            content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = TeamDTO.class))
+                    )
+            }
+    )
     public Response getTeam(@PathParam("id") Long id, @Context UriInfo uriInfo) {
         TeamDTO team = teamCRUD.findTeamById(id);
         if (team == null) {
@@ -44,6 +58,15 @@ public class TeamIdResource {
     @PATCH
     @Path("/{id}")
     @Transactional
+    @Operation(summary = "update a team's category", description = "update a team's category")
+    @APIResponses(
+            value = {
+                    @APIResponse(
+                            responseCode = "200", description = "Successfully update a team's category",
+                            content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = TeamDTO.class))
+                    )
+            }
+    )
     public Response updateTeamCategory(@PathParam("id") Long id, JsonObject jsonObject, @Context UriInfo uriInfo) {
         TeamDTO team = teamCRUD.findTeamById(id);
         if (team == null) {
@@ -79,6 +102,19 @@ public class TeamIdResource {
     @DELETE
     @Path("/{id}")
     @Transactional
+    @Operation(summary = "delete team", description = "delete a team specified by id")
+    @APIResponses(
+            value = {
+                    @APIResponse(
+                            responseCode = "200", description = "Successfully delete an existing team",
+                            content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = TeamDTO.class))
+                    ),
+                    @APIResponse(
+                            responseCode = "404", description = "Could not find a team with the given id",
+                            content = @Content(mediaType = MediaType.TEXT_PLAIN)
+                    )
+            }
+    )
     public Response deleteTeam(@PathParam("id") Long id) {
         boolean deleted = teamCRUD.deleteTeamById(id);
         if (deleted) {
