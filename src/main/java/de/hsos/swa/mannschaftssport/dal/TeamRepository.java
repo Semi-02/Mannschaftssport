@@ -3,12 +3,14 @@ package de.hsos.swa.mannschaftssport.dal;
 import de.hsos.swa.mannschaftssport.bl.Category;
 import de.hsos.swa.mannschaftssport.bl.Team;
 import de.hsos.swa.mannschaftssport.bl.TeamRegistry;
+import de.hsos.swa.mannschaftssport.logging.Log;
 import jakarta.inject.Singleton;
 
 import java.util.HashMap;
 import java.util.List;
 
 @Singleton
+@Log(Log.Level.TRACE)
 public class TeamRepository implements TeamRegistry {
 
     private final HashMap<Long, Team> teams = new HashMap<>();

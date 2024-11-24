@@ -2,6 +2,7 @@ package de.hsos.swa.mannschaftssport.boundary;
 
 import de.hsos.swa.mannschaftssport.acl.TeamDTO;
 import de.hsos.swa.mannschaftssport.al.TeamCRUD;
+import de.hsos.swa.mannschaftssport.logging.Log;
 import jakarta.inject.Inject;
 import jakarta.json.Json;
 import jakarta.json.JsonObject;
@@ -17,6 +18,7 @@ import org.eclipse.microprofile.openapi.annotations.responses.APIResponses;
 @Path("/teams")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
+@Log(Log.Level.INFO)
 public class TeamIdResource {
 
     @Inject

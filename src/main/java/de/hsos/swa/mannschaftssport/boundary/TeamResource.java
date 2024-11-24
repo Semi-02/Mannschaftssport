@@ -2,6 +2,7 @@ package de.hsos.swa.mannschaftssport.boundary;
 
 import de.hsos.swa.mannschaftssport.acl.TeamDTO;
 import de.hsos.swa.mannschaftssport.al.TeamCRUD;
+import de.hsos.swa.mannschaftssport.logging.Log;
 import jakarta.inject.Inject;
 import jakarta.json.Json;
 import jakarta.json.JsonObject;
@@ -23,6 +24,7 @@ import java.net.URI;
 import java.util.*;
 
 @Path("/teams")
+@Log(Log.Level.INFO)
 public class TeamResource {
 
     @Inject
@@ -94,7 +96,7 @@ public class TeamResource {
         JsonObject responseJson = Json.createObjectBuilder()
                 .add("data", Json.createObjectBuilder()
                         .add("type", "teams")
-                        .add("id", ((Long) newTeam.getId()).toString())
+                        .add("id", (/*(Long) newTeam.getId()).toString()*/ newTeam.getId()))
                         .add("attributes", Json.createObjectBuilder()
                                 .add("name", newTeam.getAttributes().getName())
                                 .add("category", newTeam.getAttributes().getCategory()))

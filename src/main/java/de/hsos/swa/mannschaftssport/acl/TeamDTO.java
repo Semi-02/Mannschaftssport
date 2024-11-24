@@ -1,8 +1,17 @@
 package de.hsos.swa.mannschaftssport.acl;
 
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
+import org.eclipse.microprofile.openapi.annotations.media.SchemaProperty;
+
 public class TeamDTO {
+
+    @Schema(title = "team id")
     private long id;
+
+    @Schema(title = "Type of entity, always 'team' here ", required = true, defaultValue = "team")
     private String type;
+
+    @Schema(title = "Attributes of the team")
     private Attributes attributes;
 
     public TeamDTO() {
@@ -70,8 +79,11 @@ public class TeamDTO {
         return id == teamDTO.id;
     }
 
+    @Schema(description = "Attirbutes associated with a team")
     public static class Attributes {
+        @Schema(title = "name", required = true, defaultValue = "BC BW Ermke")
         private String name;
+        @Schema(title = "category, i.e. at what class the team plays", required = true, defaultValue = "masters")
         private String category;
 
         public Attributes() {
